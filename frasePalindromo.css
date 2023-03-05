@@ -1,0 +1,41 @@
+body {
+    background-color: wheat;
+}
+div {
+    background-color: rgb(56, 56, 136);
+    margin: 20px 50px; /* Espaço fora do conteiner */
+    padding: 20px;/* Espaço dentro do conteiner, primeiro valor cima e baixo, segundo esquerda e direita */
+    text-align: center;
+    font-style: italic;
+    font-size: 25px; /* Tamanho da fonte */
+    border: 2px black solid; /* Largura, cor, estilo */
+    border-radius: 5px; /* Arredonda as bordas */
+    box-shadow: 0px 5px 10px 0px rgb(17, 17, 17); /* sombra */
+}
+img {
+    float: center;  /* Alinha a imagem no centro*/
+    height: 230px;
+    width: 500px;
+    border: 2px black solid; /*largura, cor, estilo*/
+    border-radius: 5px; /*arredonda as bordas*/
+    box-shadow: 0px 5px 10px 0px rgb(17, 17, 17); /*sombra*/
+}
+h1 {
+    border-bottom-style: inset;
+    border-color: black;
+}
+input {
+    border: 2px black solid; /*largura, cor, estilo*/
+    border-radius: 5px; /*arredonda as bordas*/
+    box-shadow: 0px 5px 10px 0px rgb(17, 17, 17); /*sombra*/
+    background-color: rgb(0, 235, 39);     
+}
+pre {
+    font-size: 1.2em;
+}
+.entre-letras {
+    letter-spacing: 0.5em; /* Espaço entre as letras */
+}
+.alinha-direita {
+    text-align: right; /* Alinha a direita */
+}
