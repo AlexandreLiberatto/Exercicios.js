@@ -34,3 +34,26 @@ const obterCavalo = (num) => {
   const posicao = num - 1; // Posição no vetor (subtrai 1, pois inicia em zero)
   return CAVALOS[posicao]; // nome do cavalo (da const CAVALOS)
 };
+
+frm.addEventListener("blur", () => {
+  // Se não preencheu o campo, limpa respCavalos e retorna
+  if (frm.inCavalo.value == "") {
+    respCavalo.innerText = "";
+    return;
+  }
+  const numCavalo = Number(frm.inCavalo.value); // Nº do cavalo convertido em número
+
+  if (!validarCavalo(numCavalo)) {
+    alert("Nº do cavalo inválido");
+    frm.inCavalo.focus();
+    return;
+  }
+
+  const nome = obterCavalo(numCavalo);
+  const contaNum = contarApostas(numCavalo);
+  const total = totalizarApostas(numCavalo);
+
+  respCavalo.innerText = `${nome} (Apostas: ${contaNum} - R$: ${total.toFixed(
+    2
+  )})`;
+});
