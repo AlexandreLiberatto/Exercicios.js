@@ -57,3 +57,27 @@ frm.addEventListener("blur", () => {
     2
   )})`;
 });
+
+const validarCavalo = (num) => {
+  return num >= 1 && num <= CAVALOS.length;
+};
+
+const contarApostas = (num) => {
+  let contador = 0;
+  for (const aposta of apostas) {
+    if (aposta.cavalo == num) {
+      contador++;
+    }
+  }
+  return contador;
+};
+
+const totalizarApostas = (num) => {
+  let total = 0;
+  for (const aposta of apostas) {
+    if (aposta.cavalo == num) {
+      total += aposta.valor;
+    }
+  }
+  return total;
+};
