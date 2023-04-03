@@ -81,3 +81,24 @@ const totalizarApostas = (num) => {
   }
   return total;
 };
+
+frm.inCavalo.addEventListener("focus", () => {
+  frm.inCavalo.value = "";
+  respCavalo.innerText = "";
+});
+
+frm.btResumo.addEventListener("click", () => {
+  const somaApostas = [0, 0, 0, 0, 0, 0];
+
+  for (const aposta of apostas) {
+    somaApostas[aposta.cavalo - 1] += aposta.valor;
+  }
+
+  let resposta = `Nº Cavalo...........R$ Apostado\n ${"-".repeat(35)}\n`;
+
+  CAVALOS.forEach((cavalo, i) => {
+    resposta += ` ${i + 1} ${cavalo.padEnd(20)}`;
+    resposta += ` ${somaApostas[i].toFixed(2).padStart(11)}\n`;
+  });
+  respLista.innerText = resposta;
+});
