@@ -14,6 +14,7 @@ frm.addEventListener("submit", (e) => {
   const cavalo = Number(frm.inCavalo.value);
   const valor = Number(frm.inValor.value);
 
+
   // Adiciona ao vetor de objetos (atributos cavalo e valor)
   apostas.push({ cavalo, valor });
   //variável para exibir a lista de apostas realizadas
