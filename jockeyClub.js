@@ -115,7 +115,7 @@ frm.btGanhador.addEventListener("click", () => {
     (acumulador, aposta) => acumulador + aposta.valor,
     0
   );
-  let resumo = `Resultado Final dp Páreo\n ${"-".repeat(30)}\n`;
+  let resumo = `Resultado Final do Páreo\n ${"-".repeat(30)}\n`;
 
   resumo += `Nº Total de Apostas: ${apostas.length}\n`;
   resumo += `Total Geral R$: ${total.toFixed(2)}\n\n`;
