@@ -102,3 +102,31 @@ frm.btResumo.addEventListener("click", () => {
   });
   respLista.innerText = resposta;
 });
+
+frm.btGanhador.addEventListener("click", () => {
+  const ganhador = Number(prompt("Nº Cavalo Ganhador: "));
+
+  if (isNaN(ganhador) || !validarCavalo(ganhador)) {
+    alert("Cavalo Inválido");
+    return;
+  }
+  const total = apostas.reduce(
+    (acumulador, aposta) => acumulador + aposta.valor,
+    0
+  );
+  let resumo = `Resultado Final dp Páreo\n ${"-".repeat(30)}\n`;
+
+  resumo += `Nº Total de Apostas: ${apostas.length}\n`;
+  resumo += `Total Geral R$: ${total.toFixed(2)}\n\n`;
+  resumo += `Ganhador Nº ${ganhador} - ${obterCavalo(ganhador)}\n\n`;
+  resumo += `Nº de Apostas: ${contarApostas(ganhador)}\n`;
+  resumo += `Total Apostado R$: ${totalizarApostas(ganhador).toFixed(2)}`;
+
+  respLista.innerText = resumo;
+
+  frm.btApostar.disabled = true;
+  frm.btGanhador.disabled = true;
+  frm.btNovo.focus();
+});
+
+frm.btNovo.addEventListener("click", () => window.location.reload());
