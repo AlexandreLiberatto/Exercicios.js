@@ -65,3 +65,24 @@ frm.addEventListener("submit", (e) => {
   frm.inPoltrona.value = "";
   frm.inPoltrona.focus();
 });
+
+frm.btConfirmar.addEventListener("click", () => {
+  if (reservadas.length == 0) {
+    alert("Não há poltronas reservadas");
+    frm.inPoltrona.focus();
+    return;
+  }
+
+  const ocupadas = localStorage.getItem("teatroOcupadas")
+    ? localStorage.getItem("teatroOcupadas").split(";")
+    : [];
+
+  for (let i = reservadas.length - 1; i >= 0; i--) {
+    ocupadas.push(reservadas[i]);
+
+    const imgPoltrona = dvPalco.querySelectorAll("img")[reservadas[i] - 1];
+
+    reservadas.pop();
+  }
+  localStorage.setItem("teatroOcupadas", ocupadas.join(";"));
+});
