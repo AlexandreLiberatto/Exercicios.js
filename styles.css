@@ -26,11 +26,11 @@ body {
 }
 img {
     float: left;  
-    height: 230px;
+    /* height: 230px;
     width: 500px;
     border: 2px black solid; /*largura, cor, estilo*/
     border-radius: 20px; /*arredonda as bordas*/
-    box-shadow: 0px 5px 10px 0px rgb(17, 17, 17); /*sombra*/
+    box-shadow: 0px 5px 10px 0px rgb(17, 17, 17); /*sombra*/ 
 }
 input {
     border: 2px black solid; /*largura, cor, estilo*/
