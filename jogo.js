@@ -37,3 +37,23 @@ window.addEventListener("load", () => {
   }
   respPalavra.innerText = novaPalavra;
 });
+
+frm.btVerDica.addEventListener("click", () => {
+  if (respErros.innerText.includes("*")) {
+    alert("Você já solicitou a dica...");
+    frm.inLetra.focus();
+    return;
+  }
+
+  respDica.innerText = " * " + dicaSorteada;
+  respErros.innerText += "*";
+
+  const chances = Number(respChances.innerText) - 1;
+  respChances.innerText = chances;
+
+  trocarStatus(chances);
+
+  verificarFim();
+
+  frm.inLetra.focus();
+});
