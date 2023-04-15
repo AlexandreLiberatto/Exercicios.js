@@ -57,3 +57,67 @@ frm.btVerDica.addEventListener("click", () => {
 
   frm.inLetra.focus();
 });
+
+const trocarStatus = (num) => {
+  if (num > 0) imgStatus.src = `img/status${num}.jpg`;
+};
+
+frm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const letra = frm.inLetra.value.toUpperCase();
+
+  let erros = respErros.innerText;
+  let palavra = respPalavra.innerText;
+
+  if (erros.includes(letra) || palavra.includes(letra)) {
+    alert("Você já apostou está letra");
+    frm.inLetra.focus();
+    return;
+  }
+
+  if (palavraSorteada.includes(letra)) {
+    let novaPalavra = "";
+
+    for (let i = 0; i < palavraSorteada.length; i++) {
+      if (palavraSorteada.charAt(i) == letra) {
+        novaPalavra += letra;
+      } else {
+        novaPalavra += palavra.charAt(i);
+      }
+    }
+    respPalavra.innerText = novaPalavra;
+  } else {
+    respErros.innerText += letra;
+    const chances = Number(respChances.innerText) - 1;
+    respChances.innerText = chances;
+
+    trocarStatus(chances);
+  }
+  verificarFim();
+
+  frm.inLetra.value = "";
+  frm.inLetra.focus();
+});
+
+const verificarFim = () => {
+  const chances = Number(respChances.innerText);
+
+  if (chances == 0) {
+    respMensagemFinal.className = "display-3 text-danger";
+    respMensagemFinal.innerText = `Ah... é ${palavraSorteada}. Você perdeu!`;
+    concluirJogo();
+  } else if (respPalavra.innerText == palavraSorteada) {
+    respMensagemFinal.className = "display-3 text-primary";
+    respMensagemFinal.innerText = "Parabéns!! Você ganhou.";
+    trocarStatus(4);
+    concluirJogo();
+  }
+};
+
+const concluirJogo = () => {
+  respDica.innerText = "* Clique no botão 'Iniciar Jogo' para jogar novamente";
+  frm.inLetra.disabled = true;
+  frm.btJogar.disabled = true;
+  frm.btVerDica.disabled = true;
+};
